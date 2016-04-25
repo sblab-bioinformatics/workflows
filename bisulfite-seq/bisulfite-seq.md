@@ -1,3 +1,16 @@
+<!-- MarkdownTOC -->
+
+- [Processing BS and oxBS-Seq data](#processing-bs-and-oxbs-seq-data)
+    - [Quality control](#quality-control)
+    - [Adapter trimming](#adapter-trimming)
+    - [Alignment](#alignment)
+    - [Clip read overlap](#clip-read-overlap)
+    - [Mark duplicates](#mark-duplicates)
+    - [Methylation calling](#methylation-calling)
+    - [Useful resources](#useful-resources)
+
+<!-- /MarkdownTOC -->
+
 ## Processing BS and oxBS-Seq data
 
 This a typical pipeline leading from raw fastq reads to methylation calling at individual CpG sites. There is no difference in data
@@ -23,7 +36,7 @@ cutadapt -m 10 -O 1 -a AGATCGGAAGAGC -A AGATCGGAAGAGC -o fastq_trimmed/$out1 -p 
 ```
 
 `-m 10` discards reads shorter than 10 bp after trimming, `-O 1` trims reads even if the overlap with the adapter is just 1 bp, `cutadapt`'s default
-is `-O 3`, so we are a bit more conservative.cd /lustre/sblab/martin03/repository/20150921_BrainMethylomeRoadMap/
+is `-O 3`, so we are a bit more conservative.
 
 ### Alignment
 
@@ -66,11 +79,11 @@ java -Xmx3G -jar picard.jar MarkDuplicates VALIDATION_STRINGENCY=SILENT TMP_DIR=
 ```
 
 For standard BS-Seq libraries the duplication rate can be fairly high since the bisulfite treatment makes most of the reads unsequencable.
-With PCR-Free protocol (*McInroy Plos One, under review*) this step might be skipped and anyway the duplication rate is fairly low for typical experiments.
+With PCR-Free protocol ([McInroy Plos One](http://journals.plos.org/plosone/article/metrics?id=10.1371%2Fjournal.pone.0152322)) this step might be skipped and anyway the duplication rate is fairly low for typical experiments.
 
 ### Methylation calling
 
-We use custom scripts for extracting methylation calling from bam files. [bam2methylation.py](https://github.com/dariober/bioinformatics-cafe/blob/master/bam2methylation.py)
+We use custom scripts for extracting methylation calling from bam files. [bam2methylation.py](https://github.com/dariober/bioinformatics-cafe/tree/master/bam2methylation)
 is a wrapper around `samtools mpileup`:
 
 ```
