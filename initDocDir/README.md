@@ -32,3 +32,14 @@ You start a new piece of work within a project and you want to have a dedicated
 directory and documentation for this. Documentation goes in `abc.md`, figures and 
 data in the respective directories. README files can stay empty. Once happy 
 you might want to add the all thing to github and commit.
+
+Installation
+============
+
+```
+wget https://raw.githubusercontent.com/sblab-bioinformatics/workflows/master/initDocDir/initDocDir.py
+chmod a+x initDocDir.py
+mv initDocDir.py /dir/on/path/ # Optional e.g. /usr/local/bin/ or ~/bin/
+
+initDocDir.py -h 
+```
