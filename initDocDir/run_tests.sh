@@ -9,4 +9,4 @@ echo ""
 echo "Gracefully fail on read only dir:"
 chmod 444 test_data/readOnlyDir &&
 python initDocDir.py test_data/readOnlyDir &&
-chmod 744 test_data/readOnlyDir
+chmod 766 test_data/readOnlyDir
