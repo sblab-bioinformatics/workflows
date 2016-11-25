@@ -1,6 +1,6 @@
 <!-- MarkdownTOC -->
 
-- [Installing rstudio-server on ur group server](#installing-rstudio-server-on-ur-group-server)
+- [Installing rstudio-server on group server](#installing-rstudio-server-on-group-server)
     - [Install rstudio-server](#install-rstudio-server)
     - [Configuration](#configuration)
     - [Accessing rstudio-server](#accessing-rstudio-server)
@@ -8,12 +8,12 @@
 <!-- /MarkdownTOC -->
 
 
-Installing rstudio-server on ur group server
-============================================
+Installing rstudio-server on group server
+=========================================
 
 We want to make [Rstudio](https://www.rstudio.com/) available on our group server.
-Best option is to have a Rstudio run as a server. In this way, anybody with an account on our
-server can use Rstudio from any web browser. (Provided your at CI or you can connect 
+Best option is to have a Rstudio run as a server. In this way, anybody with a user account on our
+server can access Rstudio from any web browser. (Provided your at CI or you can connect 
 via VPN from outside of course).
 
 Install rstudio-server
@@ -33,13 +33,13 @@ sudo yum install --nogpgcheck rstudio-server-rhel-1.0.44-i686.rpm
 Configuration
 -------------
 
-It appears the the following changes are required to allow users to login:
+It appears that the following change is required to allow users to login:
 
 ```
 sudo cp /etc/pam.d/login /etc/pam.d/rstudio
 ```
 
-See [Incorrect or invalid username/password](https://support.rstudio.com/hc/en-us/community/posts/200659796-Error-Incorrect-or-invalid-username-password).
+See also [Incorrect or invalid username/password](https://support.rstudio.com/hc/en-us/community/posts/200659796-Error-Incorrect-or-invalid-username-password).
 
 We also need to open the rstudio port (8787): 
 
